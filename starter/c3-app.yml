@@ -1,3 +1,4 @@
+AWSTemplateFormatVersion: "2010-09-09"
 Description:  This template deploys ec2 instances for the project starter
 
 Parameters:
