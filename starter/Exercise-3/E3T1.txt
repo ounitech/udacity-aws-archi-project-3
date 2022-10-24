@@ -1,0 +1,7 @@
+# Describe GuardDuty findings that were detected related to the brute force attack
+GuardDuty reported two problems related to an ssh brute force attempt :
+- A low severity note indicating that a brute force ssh attempt against your WebAppSG
+- A high severity note indicating that AttackInstance is being used for an ssh brute force attempt against a host. This action is illegal and you can be sued by host owner because you are responsible for the EC2 instance.
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+According to documentation, GuardDuty used VPC Flow logs to detect the attack. GuardDuty is parsing the logs with filters on port 22.
