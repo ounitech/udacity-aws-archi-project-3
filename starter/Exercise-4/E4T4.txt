@@ -1,0 +1,16 @@
+
+# What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+- move WebApp to a private subnet with no access to internet via gateway
+- use an ACL that allow only ingress traffic to port 80 on  public subnet
+- setup a distinct role for each bucket : the secret and the free
+- create a vpn endpoint for privileged users and assign them a role
+
+
+# Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+- No, since the attacker who gain access to WebApp will inherit the connectivity to S3 buckets
+
+# Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+- No, according to documentation, only new objects will be encrypted. Old objects would not benefit from encryption and a work-around like copying them again should be done.
+
+# What would happen if the original cloud formation templates are applied to this environment.
+- All manual changes via console or cli will be deleted
