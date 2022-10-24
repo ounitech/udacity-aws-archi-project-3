@@ -1,0 +1,30 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1 : Misuse of Public and Private Subnets
+- Only ELB should be on public subnet
+- Web Service Instance should be moved to a private subnet and access managed using SG
+- Private Subnets should not be accessible from Internet or access it
+
+# Poor practice 2 : Internet Gateway only for ELB subnet
+- Only subnet of ELB should be attached to an IG
+
+# Poor practice 3 : Permissive SG and No ACL
+- security group WebAppSG must allow ingress traffic to port 22 only to AttackInstanceSG
+- security group WebAppSG must allow ingress traffic port 80 only to AppLoadBalancerSG
+- security group WebAppSG must allow ingress traffic port 5000 only to AppLoadBalancerSG
+- an ACL should be in place to block all internet ingress traffic except 80
+
+# Poor practice 4 : Permissive Role
+- Role is too permissive, only S3ReadAccess to the free-recipes bucket should be allowed
+
+# Poor practice 5 : NO VPC endPoint
+ - A VPC endpoint should be in place to enable EC2 WebApp access to S3 buckets without the need to pass through internet
+
+# Poor practice 6 : No VPN
+ - Privileged business User Should use a VPN to access private and sensitive data such as secret recipe bucket and with appropriate role
+
+# Poor practice 7 : No Encryption of sensitive data
+ - Sensitive storage like secret recipe bucket should at least use S3 encryption and accessed via a restricted role
+
+ # Poor practice 8 : Load Balancing
+  - at least two EC2 must be used for WebApp and load balancer must be configured to enable scaling to more instances
