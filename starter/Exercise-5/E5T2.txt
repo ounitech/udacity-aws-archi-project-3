@@ -1,0 +1,21 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+Sonar support static code analysis for cloudformation and terraform
+see https://www.sonarqube.org/features/multi-languages/
+
+### Example vulnerability
+Administration services access should be restricted to specific IP addresses
+https://rules.sonarsource.com/cloudformation/type/Vulnerability/RSPEC-6321
+
+##Scan AMI’s or containers for OS vulnerabilities
+Nexus can help scanning container for OS vulnerabilities
+
+### Example vulnerability
+An obsolete library version with known CVE
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+AWS Inspector
+
+### Example vulnerability
+Open ports on EC2 instances
